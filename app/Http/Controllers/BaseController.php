@@ -9,7 +9,7 @@ class BaseController extends Controller
     protected $model;
     public function index()
     {
-        $data = $this->model->all();
+        $data = $this->model->get();
         return response($data, 200);
     }
 
@@ -25,4 +25,12 @@ class BaseController extends Controller
             'message' => 'Dado salvo com sucesso!',
         ], 201);
     }   
+    public function destroy($id)
+    {
+        $data = $this->model->findOrFail($id);
+        $data->delete();
+        return response([
+            'message' => 'Dado excluido com sucesso!',
+        ], 200);
+    }
 }

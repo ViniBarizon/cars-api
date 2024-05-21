@@ -20,4 +20,8 @@ class Cars extends Model
         'engine_number',
         'type',
     ];
+    
+    public function owners() {
+        return $this->belongsTo(Owner::class, 'owner_id');
+    }
 }
